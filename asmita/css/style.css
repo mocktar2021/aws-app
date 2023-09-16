@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+/* font-family: 'Roboto', sans-serif; */
+/* How to use Roboto form ^ */
+.bg-color {
+   background: #0F1322 !important;
+}
+
+.p1 {
+   font-family: 'Open Sans', sans-serif;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 64px;
+   line-height: 75px;
+   letter-spacing: 0em;
+   
+   text-align: center;
+   color: #FFFFFF;
+   margin-bottom: 3rem;  
+}
+
+.img-sponsor {
+   width: 753px;
+   height: 636px;
+}
+
+.p3 {
+   font-family: 'Open Sans', sans-serif;
+   font-style: normal;
+   font-weight: normal;
+   font-size: 64px;
+   line-height: 94px;
+   
+   color: #FFFFFF;
+   margin:auto;
+   margin-top:23rem;
+}
+
+.img-team {
+   background: url(../assets/images/team.jpg);
+   background-repeat: no-repeat;
+   background-size:cover;
+   background-position: 50%;
+   min-height: 100vh;
+}
+
+.img-event {
+   background-image: url(../assets/images/image\ 4.png);
+   background-repeat: no-repeat;
+   background-size:cover;
+   background-position: 50%;
+   min-height: 100vh;
+}
+
+.p2{
+   font-family: 'Open Sans', sans-serif;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 64px;
+   line-height: 75px;
+   font-weight: 700;
+   letter-spacing: 0em;
+   
+   padding-top: 15rem;
+
+   text-align: center;
+   color: #FFFFFF;
+}
+
+.button1 {
+   border: none;
+   background-color: #094D8A;
+   padding: 10px 60px;
+   text-align: center;
+   display: inline-block;
+   font-size: 16px;
+   cursor: pointer;
+   
+   font-family: 'Open Sans', sans-serif;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 24px;
+   line-height: 28px;
+   
+   color: #FFFFFF;
+
+   margin-top: 2rem;
+}
+
+.owl-carousel .owl-nav .owl-next:after {
+   position: absolute;
+   background-image: url('../assets/images/right.png');
+   right: 0%;
+   top: 34%;
+   background-size: 40px 40px;
+   width: 40px; 
+   height: 40px;
+   border-radius: 50%;
+   content:"";
+}
+
+.owl-carousel .owl-nav .owl-prev:after {
+   position: absolute;
+   background-image: url('../assets/images/left.png');
+   top: 34%;
+   left: 0%;
+   background-size: 40px 40px;
+   width: 40px; 
+   height: 40px;
+   border-radius: 50%;
+   content:"";
+}
+.gamename{
+   padding: 10px;
+}
+.gamename:after {
+   position: absolute;
+   content: "";
+   width: 50px;
+   height: 2px;
+   bottom: 5%;
+   background: #f23a2e;
+   left: 6.5%;
+}
+
+.contact{
+   font-size: 30px;
+}
+.sub-head-contact{
+   font-size: 26px;
+   text-align: center;
+}
+.sub-para{
+   font-size: 14px;
+
+}
+.row{
+   margin: 0!important;
+}
+
+footer{
+   padding-bottom: 2rem;
+}
+
+@media (max-width: 768px) {  
+   .p3 {
+      font-size: 36px;
+      line-height: 42px;
+
+      margin-top: 12rem;
+   }
+
+   .p2 {
+      font-size: 36px;
+      line-height: 42px;
+
+      padding-top: 4rem;
+   }
+
+   .button1 {
+      margin-top: 1rem;
+      padding: 5px 30px;
+   }
+   .owl-carousel .owl-nav .owl-next:after {
+      right: 1%;
+      top: 26%;
+   }
+   
+   .owl-carousel .owl-nav .owl-prev:after {
+      top: 26%;
+      left: 1%;
+   }
+}
+
+@media (max-width: 470px) {
+   .p1 {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 42px;
+   }
+
+   .p3 {
+      margin-top: 6.5rem;
+   }
+
+}
+
+.gallary{
+   background-color: white;
+   padding-top: 100px;
+   height: 800px;
+}
+
+.gallary h1{
+   position: relative;
+   margin-left:10%;
+   top:30px;
+   font-weight: 700;
+}
+
+#map{
+   position: relative;
+   float: right;
+   right:8%;
+   top: 500px;
+   width: 420px;
+   height:500px;
+}
+
+.gpics{
+   margin-top: 100px;
+}
+
+@media only screen and (max-width: 480px) {
+   #runningman{
+      display: none;
+   }
+
+   #asmitalogo{
+      margin-top: -10%;
+   }
+
+   #date{
+      margin-top:0% !important;
+      left:27%;
+      font-size: 18px;
+   }
+
+   #about h1{
+      font-size: 25px;
+      text-align: center;
+   }
+
+   #about p{
+      font-size: 15px;
+      text-align: center;
+      padding-top: 20px;
+   }
+
+   #about button{
+      transform: scale(0.7);
+      margin-top: 40% !important;
+   }
+
+   #map{
+      width:280px;
+      height:300px;
+      right:10%;
+      margin-top: 40%;
+   }
+}
