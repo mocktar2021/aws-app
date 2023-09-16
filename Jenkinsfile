@@ -24,7 +24,7 @@ pipeline {
                         // Deploy app to an S3 bucket
                         //sh 'aws s3 sync ./static-files s3://your-s3-bucket/'
                         sh 'ls -lhi'
-                        aws ec2 describe-instances --filters "Name=tag:Name,Values=YourTagName"
+                        sh 'aws ec2 describe-instances' 
 
                     }
                 }
