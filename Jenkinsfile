@@ -19,17 +19,11 @@ pipeline {
 
                     // Change to the directory where Terraform configuration files are located
                     dir("${workspace}/asmita") {
-                        // change directory to asmita
-                        sh 'cd asmita'
+                        echo 'Checking deployment directory...'
                         
-                    
-                            echo 'checking deployment directory...'
-                            
-                            // Deploy app to s3 bucket
-                            //sh 'aws s3 sync ./static-files s3://your-s3-bucket/'
-                            sh 'aws s3 ls'
-                            sh 'ls -lhi'
-                        }
+                        // Deploy app to an S3 bucket
+                        //sh 'aws s3 sync ./static-files s3://your-s3-bucket/'
+                        sh 'ls -lhi'
                     }
                 }
             }
