@@ -6,7 +6,7 @@ pipeline {
         AWS_DEFAULT_REGION    = 'us-east-1' // Replace with your desired AWS region
         SSH_KEY               = credentials('ssh-key') // Replace with your SSH private key credential ID
         REMOTE_USER           = 'ec2-user' // Replace with the SSH user of your EC2 instance
-        REMOTE_HOST           = '54.197.6.110' // Replace with the IP or DNS of your EC2 instance
+        REMOTE_HOST           = '54.208.88.63' // Replace with the IP or DNS of your EC2 instance
         REMOTE_DIR            = '/var/www/html/' // Replace with the path on your EC2 instance where you want to deploy the HTML app
     }
     
