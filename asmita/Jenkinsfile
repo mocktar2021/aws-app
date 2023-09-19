@@ -42,7 +42,7 @@ pipeline {
                     sshagent(credentials: ['SSH_KEY']) {
                         sh """ 
                         chmod 600 \$SSH_KEY
-                        sudo scp -i \$SSH_KEY -o StrictHostKeyChecking=no -r ${workspace}/asmita/* \$REMOTE_USER@\$REMOTE_HOST:\$REMOTE_DIR
+                        scp -i \$SSH_KEY -o StrictHostKeyChecking=no -r ${workspace}/asmita/* \$REMOTE_USER@\$REMOTE_HOST:\$REMOTE_DIR
                         """
                     }
                 }
