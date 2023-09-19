@@ -1,0 +1,26 @@
+/*/---- Import ----/*/
+@import '../../../scss/variables';
+@import '../../../scss/general';
+@import '../../../scss/others-header';
+
+/*/---- Header begins ----/*/
+.header {
+    background: $gradient-color;
+}
+/*/---- Header ends ----/*/
+
+/*/---- How-it-work begins ----/*/
+// Style is in _others-header.scss
+/*/---- How-it-work ends ----/*/
+
+
+/*/---- Download app begins ----/*/
+.download {
+    background-color: $light-color;
+}
+/*/---- Download ends ----/*/
+
+
+/*/---- Footer begins ----/*/
+// Style is in _general.scss
+/*/---- Footer ends ----/*/

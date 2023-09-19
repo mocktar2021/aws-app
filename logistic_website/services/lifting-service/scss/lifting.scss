@@ -1,0 +1,40 @@
+/*/---- Import ----/*/
+@import '../../../scss/variables';
+@import '../../../scss/general';
+@import '../../../scss/others-header';
+
+/*/---- Header begins ----/*/
+.header {
+    background: $accent-color;
+}
+/*/---- Header ends ----/*/
+
+/*/---- How it work begins ----/*/
+// Style is in _others-headr.scss
+/*/---- How it work ends ----/*/
+
+/*/---- Contact begins ----/*/
+.contact {
+    // background-color: $primary-color;
+    background: $gradient-color;
+    color: $white-color;
+    text-align: center;
+    padding: 5rem 7.5%;
+    &-content {
+        h3 {
+            margin-bottom: 30px;
+            color: $white-color;
+        }
+    }
+}
+/*/---- Contact ends ----/*/
+
+/*/---- Download app begins ----/*/
+.download {
+    background-color: $white-color;
+}
+/*/---- Download ends ----/*/
+
+/*/---- Footer begins ----/*/
+// Style is in _general.scss
+/*/---- Footer ends ----/*/
