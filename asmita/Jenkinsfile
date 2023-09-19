@@ -40,7 +40,7 @@ pipeline {
                 script {
                     // Copy your HTML app files to the EC2 instance using SCP
                     sshagent(credentials: ['SSH_KEY']) {
-                        sh "scp -i \$SSH_KEY -o StrictHostKeyChecking=no -r ${workspace}/asmita/* \$REMOTE_USER@\$REMOTE_HOST:\$REMOTE_DIR"
+                        sh "sudo scp -i \$SSH_KEY -o StrictHostKeyChecking=no -r ${workspace}/asmita/* \$REMOTE_USER@\$REMOTE_HOST:\$REMOTE_DIR"
                     }
                 }
             }
