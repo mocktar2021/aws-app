@@ -41,7 +41,7 @@ pipeline {
                     // Copy your HTML app files to the EC2 instance using SCP
                     sshagent(credentials: ['SSH_KEY']) {
                         sh """ 
-                        // chmod 600 \$SSH_KEY
+                        chmod 600 \$SSH_KEY
                         scp -i \$SSH_KEY -o StrictHostKeyChecking=no -r ${workspace}/logistic_website/* \$REMOTE_USER@\$REMOTE_HOST:\$REMOTE_DIR
                         """
                     }
