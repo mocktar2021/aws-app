@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('jenkins-user')
+        AWS_SECRET_ACCESS_KEY = credentials('jenkins-user')
+        AWS_DEFAULT_REGION    = 'us-east-1' // Replace with your desired AWS region
+        SSH_KEY               = credentials('ssh-key') // Replace with your SSH private key credential ID
+        REMOTE_USER           = 'ec2-user' // Replace with the SSH user of your EC2 instance
+        REMOTE_HOST           = '54.208.88.63' // Replace with the IP or DNS of your EC2 instance
+        REMOTE_DIR            = '/var/www/html/' // Replace with the path on your EC2 instance where you want to deploy the HTML app
+    }
+    
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from GitHub
+                checkout scm
+            }
+        }
+        
+        stage('Setup Working Directory') {
+            steps {
+                script {
+                    def workspace = pwd()  // Get the current workspace directory
+                    echo "Current workspace: ${workspace}"
+
+                    // Change to the directory where Terraform configuration files are located
+                    dir("${workspace}/phone-website") {
+                        echo 'Checking deployment directory...'
+                        
+                        // You can add additional setup steps here if needed
+                    }
+                }
+            }
+        }
+
+        stage('Deploy Application') {
+            steps {
+                script {
+                    // Copy your HTML app files to the EC2 instance using SCP
+                    sshagent(credentials: ['SSH_KEY']) {
+                        sh """ 
+                        chmod 600 \$SSH_KEY
+                        scp -i \$SSH_KEY -o StrictHostKeyChecking=no -r ${workspace}/phone-website/* \$REMOTE_USER@\$REMOTE_HOST:\$REMOTE_DIR
+                        """
+                    }
+                }
+            }
+        }
+    }
+}
