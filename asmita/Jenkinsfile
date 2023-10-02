@@ -1,8 +1,8 @@
-pipeline {
-    agent any
-    // environment {
-    //     AWS_ACCESS_KEY_ID     = credentials('jenkins-user')
-    //     AWS_SECRET_ACCESS_KEY = credentials('jenkins-user')
+// pipeline {
+//     agent any
+//     // environment {
+//     //     AWS_ACCESS_KEY_ID     = credentials('jenkins-user')
+//     //     AWS_SECRET_ACCESS_KEY = credentials('jenkins-user')
     //     AWS_DEFAULT_REGION    = 'us-east-1' // Replace with your desired AWS region
     //     SSH_KEY               = credentials('ssh-key') // Replace with your SSH private key credential ID
     //     REMOTE_USER           = 'ec2-user' // Replace with the SSH user of your EC2 instance
@@ -51,7 +51,14 @@ pipeline {
 //         }
 //     }
 // }
- stages {
+pipeline {
+    agent any
+
+    environment {
+        PATH = "$PATH:/usr/local/bin" // Update this path to match your Docker installation location
+    }
+
+    stages {
         stage('Build and Push to Docker Hub') {
             steps {
                 script {
@@ -60,19 +67,17 @@ pipeline {
                     def dockerTag = 'latest'
 
                     // Build the Docker image
-                    docker.build(imageName + ':' + dockerTag, '-f ' + dockerfile + ' .')
+                    sh "docker build -t ${imageName}:${dockerTag} -f ${dockerfile} ."
 
                     // Log in to Docker Hub
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                        // Push the Docker image to Docker Hub
-                        docker.image(imageName + ':' + dockerTag).push()
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
                     }
+
+                    // Push the Docker image to Docker Hub
+                    sh "docker push ${imageName}:${dockerTag}"
                 }
             }
         }
     }
 }
-
-
-
-
