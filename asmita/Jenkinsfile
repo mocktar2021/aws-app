@@ -82,7 +82,7 @@ pipeline {
                         echo 'Checking deployment directory...'
 
                         // Build the Docker image
-                        sh "sudo docker build -t ${imageName}:${dockerTag} -f Dockerfile ."
+                        sh "docker build -t ${imageName}:${dockerTag} -f Dockerfile ."
 
                         // Log in to Docker Hub
                         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
