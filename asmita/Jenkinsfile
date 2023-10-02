@@ -71,26 +71,27 @@ pipeline {
             steps {
                 script {
                     def imageName = 'mocktar77/asmita-v1'
-                    // def dockerfile = 'Dockerfile'
                     def dockerTag = 'latest'
 
-//                     def workspace = pwd()  // Get the current workspace directory
+                    // Get the current workspace directory
+                    def workspace = pwd()
                     echo "Current workspace: ${workspace}"
 
-//                     // Change to the directory where Terraform configuration files are located
-                    // dir("${workspace}/asmita") {
-                    //     echo 'Checking deployment directory...'
+                    // Change to the directory where Dockerfile and application files are located
+                    dir("${workspace}/asmita") {
+                        echo 'Checking deployment directory...'
 
+                        // Build the Docker image
+                        sh "docker build -t ${imageName}:${dockerTag} -f Dockerfile ."
 
-                    // Build the Docker image
-                    sh "docker build -t ${imageName}:${dockerTag} -f ${workspace}/asmita/.
-                    // Log in to Docker Hub
-                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+                        // Log in to Docker Hub
+                        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                            sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+                        }
+
+                        // Push the Docker image to Docker Hub
+                        sh "docker push ${imageName}:${dockerTag}"
                     }
-
-                    // Push the Docker image to Docker Hub
-                    sh "docker push ${imageName}:${dockerTag}"
                 }
             }
         }
