@@ -59,6 +59,14 @@ pipeline {
     }
 
     stages {
+
+        stage('Checkout') {
+            steps {
+                // Checkout the code from GitHub
+                checkout scm
+            }
+        }
+
         stage('Build and Push to Docker Hub') {
             steps {
                 script {
