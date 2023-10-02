@@ -63,12 +63,19 @@ pipeline {
             steps {
                 script {
                     def imageName = 'mocktar77/asmita-v1'
-                    def dockerfile = 'Dockerfile'
+                    // def dockerfile = 'Dockerfile'
                     def dockerTag = 'latest'
 
-                    // Build the Docker image
-                    sh "docker build -t ${imageName}:${dockerTag} -f ${dockerfile} ."
+//                     def workspace = pwd()  // Get the current workspace directory
+                    echo "Current workspace: ${workspace}"
 
+//                     // Change to the directory where Terraform configuration files are located
+                    // dir("${workspace}/asmita") {
+                    //     echo 'Checking deployment directory...'
+
+
+                    // Build the Docker image
+                    sh "docker build -t ${imageName}:${dockerTag} -f ${workspace}/asmita/.
                     // Log in to Docker Hub
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
