@@ -1,3 +1,9 @@
-FROM httpd:2.4
-MAINTAINER Godlove
-COPY ./phone_website /usr/local/apache2/htdocs
+# Use the official Nginx image as a base
+FROM mocktar77/httpd:latest
+
+
+# Copy static web content into the container
+COPY . htdocs
+
+# Expose a port for serving web content
+EXPOSE 80
