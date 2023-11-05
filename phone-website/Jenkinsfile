@@ -70,7 +70,7 @@ pipeline {
         stage('Build and Push to Docker Hub') {
             steps {
                 script {
-                    def imageName = 'akoleme/phone-v2'
+                    def imageName = 'akoleme/phone-v3'
                     def dockerTag = 'latest'
 
                     // Get the current workspace directory
